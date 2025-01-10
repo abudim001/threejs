@@ -1,4 +1,4 @@
-export const transition = { type: "spring", duration: 0.8 };
+export const transition = { type: "spring", duration: 1 }; // Increased base duration for smoother transitions
 
 export const slideAnimation = (direction) => {
   return {
@@ -15,9 +15,10 @@ export const slideAnimation = (direction) => {
       transition: { ...transition, delay: 0 },
     },
     exit: {
-      x: direction === "left" ? -100 : direction === "right" ? 100 : 0,
+      x: direction === "left" ? -300 : direction === "right" ? 300 : 0, // Slide further out for better visibility
       y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
-      transition: { ...transition, delay: 0 },
+      opacity: 0,
+      transition: { type: "spring", stiffness: 30, damping: 10, duration: 1.5 }, // Slower and smoother motion
     },
   };
 };
@@ -33,7 +34,7 @@ export const fadeAnimation = {
   },
   exit: {
     opacity: 0,
-    transition: { ...transition, delay: 0 },
+    transition: { type: "tween", ease: "easeInOut", duration: 1 }, // Smooth fade-out
   },
 };
 
@@ -42,10 +43,15 @@ export const headTextAnimation = {
   animate: { x: 0, opacity: 1 },
   transition: {
     type: "spring",
-    damping: 5,
-    stiffness: 50,
+    damping: 10,
+    stiffness: 40,
     restDelta: 0.001,
-    duration: 0.3,
+    duration: 1, // Adjusted for smoothness
+  },
+  exit: { 
+    x: -300, // Smooth slide out to the left
+    opacity: 0,
+    transition: { type: "spring", stiffness: 30, damping: 10, duration: 1.5 }, // Slow and smooth
   },
 };
 
@@ -54,17 +60,26 @@ export const headContentAnimation = {
   animate: { y: 0, opacity: 1 },
   transition: {
     type: "spring",
-    damping: 5,
-    stiffness: 50,
+    damping: 10,
+    stiffness: 40,
     restDelta: 0.001,
-    duration: 0.6,
+    duration: 1,
     delay: 0.2,
     delayChildren: 0.2,
+  },
+  exit: {
+    y: -100,
+    opacity: 0,
+    transition: { type: "spring", stiffness: 30, damping: 10, duration: 1.5 }, // Slow and smooth
   },
 };
 
 export const headContainerAnimation = {
   initial: { x: -100, opacity: 0, transition: { ...transition, delay: 0.5 } },
   animate: { x: 0, opacity: 1, transition: { ...transition, delay: 0 } },
-  exit: { x: -100, opacity: 0, transition: { ...transition, delay: 0 } },
+  exit: { 
+    x: -300, // Smooth slide out to the left
+    opacity: 0,
+    transition: { type: "spring", stiffness: 30, damping: 10, duration: 1.5 }, // Slower and smoother
+  },
 };

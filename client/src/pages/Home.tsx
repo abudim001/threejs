@@ -10,7 +10,7 @@ import {
 } from "../config/motion";
 
 import state from "../store";
-import CustomButton from "../components/CustomButton";
+import { CustomButton } from "../components";
 
 const Home = () => {
   const snap = useSnapshot(state);
@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <AnimatePresence>
       {snap.intro && (
-        <motion.section className="home" {...slideAnimation("left")}>
+        <motion.section className="home" {...headContainerAnimation}>
           <motion.header {...slideAnimation("down")}>
             <img className="w-8 h-8" alt="logo" src="./threejs.png" />
           </motion.header>
