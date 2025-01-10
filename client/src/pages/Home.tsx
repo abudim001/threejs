@@ -10,6 +10,7 @@ import {
 } from "../config/motion";
 
 import state from "../store";
+import CustomButton from "../components/CustomButton";
 
 const Home = () => {
   const snap = useSnapshot(state);
@@ -37,6 +38,12 @@ const Home = () => {
                 customization tool. <strong>Unleash your imagination</strong>{" "}
                 and define your own style.
               </p>
+              <CustomButton
+                type="filled"
+                title="Customize it"
+                customStyles="w-fit px-2=4 py-2.5 font-bold text-sm"
+                handleClick={() => (state.intro = false)}
+              />
             </motion.div>
           </motion.div>
         </motion.section>
