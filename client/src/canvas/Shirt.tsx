@@ -13,16 +13,38 @@ const Shirt = () => {
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
 
+  useFrame((state, delta) => {
+    easing.damp;
+  });
+
   return (
     <group>
       <mesh
-        castShadow
         geometry={nodes.T_Shirt_male.geometry}
         material={materials.lambert1}
-        material-roughness={1}
-        dispose={null}
+        // castShadow
+        // material-roughness={10}
+        // dispose={null}
       >
-        {/* Add decals or other customizations here if needed */}
+        {snap.isFullTexture && (
+          <Decal
+            map={fullTexture}
+            position={[0, 0, 0]}
+            rotation={[0, 0, 0]}
+            scale={1}
+          />
+        )}
+
+        {snap.isLogoTexture && (
+          <Decal
+            map={logoTexture}
+            position={[0, 0.004, 0.15]}
+            rotation={[0, 0, 0]}
+            scale={0.15}
+            depthTest={false}
+            depthWrite={true}
+          />
+        )}
       </mesh>
     </group>
   );
