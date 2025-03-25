@@ -9,9 +9,12 @@ const CanvasModel = () => {
     <Canvas
       shadows
       camera={{ position: [0, 0, 0], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true }}
+      gl={{ preserveDrawingBuffer: true, alpha: true }} // Added alpha: true
       className="w-full max-w-full h-full transition-all ease-in"
     >
+      {/* Add a clear color with your desired background */}
+      <color attach="background" args={["white"]} />
+
       <ambientLight intensity={0.5} />
       <Environment preset="city" />
 

@@ -17,6 +17,7 @@ html {
 
 .app {
   @apply relative w-full h-screen overflow-hidden;
+  background-color: #f0f0f0; /* Add this line with your desired color */
 }
 
 .home {
@@ -48,7 +49,7 @@ html {
 }
 
 .aipicker-textarea {
-  @apply w-full bg-transparent text-sm border border-gray-300 p-2 outline-none flex-1;
+  @apply w-full bg-transparent text-sm border border-gray-200 p-2 outline-none flex-1;
 }
 
 .filepicker-container {

@@ -19,7 +19,7 @@ const Customizer = () => {
           {" "}
           <motion.div
             key="custom"
-            className="absolute top-0 left-0 z-10 bg-gray-300"
+            className="absolute top-0 left-0 z-10"
             {...slideAnimation("left")}
           >
             <div className="flex items-center min-h-screen min-w-screen">
@@ -27,8 +27,10 @@ const Customizer = () => {
                 {EditorTabs.map((tap) => (
                   <Tap
                     key={tap.name}
-                    // tab={tab}
-                    // handleClick={()=> {}}
+                    tab={tap}
+                    handleClick={() => {}}
+                    isFilterTab
+                    isActiveTab={tap.name}
                   />
                 ))}
               </div>
@@ -46,17 +48,17 @@ const Customizer = () => {
             />
           </motion.div>
           <motion.div
-            className="filtertabs-container bg-gray-300"
+            className="filtertabs-container"
             {...slideAnimation("up")}
           >
             {" "}
             {FilterTabs.map((tap) => (
               <Tap
                 key={tap.name}
-                // tab={tab}
-                // handleClick={()=> {}}
-                // isFilterTab
-                // isActive=""
+                tab={tap}
+                handleClick={() => {}}
+                isFilterTab
+                isActiveTab={tap.name}
               />
             ))}
           </motion.div>
