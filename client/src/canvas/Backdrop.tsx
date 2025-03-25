@@ -12,7 +12,7 @@ const Backdrop = () => {
         rotation={[Math.PI / 2, 0, 0]}
         position={[0, 0, -0.14]}
         opacity={1.3}
-        color="#FFFFFF"
+        color="light-cyan"
       >
         <RandomizedLight
           amount={4}
