@@ -3,12 +3,13 @@ import { easing } from "maath";
 import { useSnapshot } from "valtio";
 import { useFrame } from "@react-three/fiber";
 import { Decal, useGLTF, useTexture } from "@react-three/drei";
+import * as THREE from "three";
 
 import state from "../store";
 
 const Shirt = () => {
   const snap = useSnapshot(state);
-  const { nodes, materials } = useGLTF("/shirt_baked.glb");
+  const { nodes, materials } = useGLTF("/shirt_baked.glb") as any;
 
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
@@ -24,7 +25,7 @@ const Shirt = () => {
       <mesh
         geometry={nodes.T_Shirt_male.geometry}
         material={materials.lambert1}
-        // castShadow
+        castShadow={true}
         // material-roughness={10}
         // dispose={null}
       >
@@ -44,7 +45,7 @@ const Shirt = () => {
             rotation={[0, 0, 0]}
             scale={0.15}
             depthTest={false}
-            depthWrite={true}
+            // depthWrite={true}
           />
         )}
       </mesh>
